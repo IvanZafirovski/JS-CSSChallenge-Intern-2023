@@ -20,15 +20,36 @@ body {
 }
 
 .layout-placeholder {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 2.4rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   color: #464b5b;
   font-size: 18px;
-  padding: 2.4rem;
+  padding: 3.2rem;
 }
-
+.col-1 {
+  margin: 0 auto;
+  display: grid;
+}
+.col-2 {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.col-4 {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.col-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
 .accordion {
   background: #e6ebff;
   border-radius: 5px;
@@ -103,46 +124,13 @@ body.dark .like-btn svg {
 }
 /********Cards ******/
 .card-element {
-  width: 28rem;
+  margin: 0 auto;
+  /* width: 25%; */
   background-color: #ffffff;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
   border: 1px solid #d6dae4;
   margin-bottom: 2.4rem;
 }
-
-.col-1 {
-  width: 50rem;
-  background-color: #ffffff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border: 1px solid #d6dae4;
-}
-
-.hide {
-  display: none;
-}
-/* 
-.card-element .card-2 {
-  display: none;
-}
-
-.col-2 {
-  max-width: 50%;
-  background-color: #ffffff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border: 1px solid #d6dae4;
-}
-.col-3 {
-  max-width: 10%;
-  background-color: #ffffff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border: 1px solid #d6dae4;
-}
-.col-4 {
-  max-width: 50%;
-  background-color: #ffffff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border: 1px solid #d6dae4;
-} */
 
 .heading {
   display: flex;
@@ -160,7 +148,6 @@ body.dark .like-btn svg {
   border-radius: 50%;
   padding: 1.2rem;
 }
-
 .name {
   font-size: 1.2rem;
   font-weight: 700;
@@ -180,7 +167,7 @@ body.dark .like-btn svg {
   border-bottom: 1px solid #d6dae4;
 }
 .content img {
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .content p {
@@ -212,4 +199,21 @@ body.dark .like-btn svg {
   background-color: yellow;
   padding: 50px;
   font-size: 20px;
+}
+.like-btn:hover {
+  background-color: #0033ff;
+}
+@media only screen and (max-width: 768px) {
+  .layout-placeholder {
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 18px;
+    padding: 1.6rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .layout-placeholder {
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 18px;
+    padding: 1.6rem;
+  }
 }

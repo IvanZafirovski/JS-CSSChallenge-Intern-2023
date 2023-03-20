@@ -126,36 +126,6 @@ function createCardElement(card, index) {
   return newCard;
 }
 
-/// async & await
-
-// const getData = async () => {
-//   const response = await fetch("data.json");
-//   const data = await response.json();
-//   return data;
-// };
-
-// getData().then((data) => console.log("resolved: ", data));
-// const darkTheme = document.querySelector(".container");
-
-// darkTheme.addEventListener("click", function () {
-//   container.classList.add("dark");
-// });
-
-// let radios = document.querySelectorAll[".radio-group"];
-// for (radio in radios) {
-//   radio.onclick = function () {
-//     alert(radio.value);
-//     console.log("tntntnnt");
-//   };
-// }
-
-// formControls.forEach((el) => {
-//   el.addEventListener("click", (event) => {
-//     radioGroups.classList.add("radio-group-dark");
-//     formControls.classList.add(".form-control-dark");
-//     // Something happens on click
-//   });
-// });
 const darkTheme = document.querySelector("#darkTheme");
 const lightTheme = document.querySelector("#lightTheme");
 const body = document.querySelector("body");
@@ -172,31 +142,11 @@ const numberOfColumns = document.querySelector("#numberOfColumns");
 numberOfColumns.addEventListener("change", function (e) {
   let selectedVal = e.target.value;
   document.querySelector(
-    ".card-element"
-  ).className = `card-element col-${selectedVal}`;
+    ".layout-placeholder"
+  ).className = `.layout-placeholder col-${selectedVal}`;
 });
 
-const colOne = document.querySelector(".card-element.card-1");
-console.log(colOne);
-
-if ("col-1" === 1) {
-  document.querySelector(".card-element card-1").className = "hide";
-} else if ("col-2" === 2) {
-  document.querySelector(".card-element card-2").className = "hide";
-} else if ("col-3" === 3) {
-  document.querySelector(".card-element card-3").className = "hide";
-} else {
-  console.log("glup si ");
-}
-
-const color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape" && !modal.classList.contains("hidden")) {
-    {
-      // if the modal DOES NOT contains class hidden then close the modal
-      // if (!modal.classList.contains("hidden")) {
-      modalClose();
-    }
-  }
-  console.log("escape wass press");
+const likeBtn = document.querySelectorAll(".like-btn");
+likeBtn.addEventListener("click", function () {
+  console.log("add");
 });

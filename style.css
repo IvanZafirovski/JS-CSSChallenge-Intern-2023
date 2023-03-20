@@ -6,7 +6,6 @@ body {
 
 .container {
   display: flex;
-  height: 100vh;
 }
 
 .sidebar {
@@ -19,16 +18,6 @@ body {
   background: #f9fafd;
 }
 
-.layout-placeholder {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  color: #464b5b;
-  font-size: 18px;
-  padding: 1.6rem;
-}
 .col-1 {
   max-width: 1100px;
   margin: 0 auto;
@@ -71,6 +60,17 @@ body {
   grid-template-columns: repeat(5, 1fr);
   color: #464b5b;
   font-size: 18px;
+}
+
+.layout-placeholder.dynamic {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  color: #464b5b;
+  font-size: 18px;
+  padding: 1.6rem;
 }
 .accordion {
   background: #e6ebff;
@@ -131,11 +131,11 @@ input[type="radio"] {
 }
 
 /* my settings*/
-
+/* 
 body.dark .preview {
   background-color: #121212;
   color: #e6ebff;
-}
+} */
 
 body.dark .card-element {
   background-color: #121212;
@@ -144,10 +144,14 @@ body.dark .card-element {
 body.dark .like-btn svg {
   color: #fff;
 }
+body.dark.like-btns:hover {
+  background-color: #fff;
+}
 /********Cards ******/
 .card-element {
+  display: grid;
+  grid-template-rows: 6.4rem 36rem 3.2rem;
   margin: 0 auto;
-
   background-color: #ffffff;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
   border: 1px solid #d6dae4;
@@ -165,10 +169,7 @@ body.dark .like-btn svg {
 }
 
 .profile_image img {
-  width: 4rem;
-  height: 4rem;
   border-radius: 50%;
-  padding: 1.2rem;
 }
 .name {
   font-size: 1.2rem;
@@ -177,19 +178,24 @@ body.dark .like-btn svg {
 .date {
   font-size: 0.7rem;
 }
-.logo {
+.heading img {
+  width: 3.2em;
+  height: 3.2rem;
   display: flex;
   align-items: center;
+  padding: 1rem;
 }
 .content {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-
   border-bottom: 1px solid #d6dae4;
+  padding: 1.6rem;
 }
 .content img {
-  max-width: 80%;
+  max-width: 75%;
+
+  max-height: 75%;
 }
 
 .content p {
@@ -208,6 +214,9 @@ body.dark .like-btn svg {
   border: none;
   cursor: pointer;
 }
+.like-btn.full {
+  fill: red;
+}
 .like-btns {
   border: none;
   background-color: #fff;
@@ -218,7 +227,8 @@ body.dark .like-btn svg {
 }
 
 #load-more {
-  position: sticky;
+  display: block;
+  margin: 0 auto 10px auto;
   bottom: 1rem;
   align-self: flex-end;
   background-color: #228be6;
@@ -234,14 +244,14 @@ body.dark .like-btn svg {
 }
 
 @media only screen and (max-width: 768px) {
-  .layout-placeholder {
+  .layout-placeholder.dynamic {
     grid-template-columns: repeat(1, 1fr);
     font-size: 18px;
     padding: 1.6rem;
   }
 }
 @media only screen and (min-width: 992px) {
-  .layout-placeholder {
+  .layout-placeholder.dynamic {
     grid-template-columns: repeat(2, 1fr);
     font-size: 18px;
     padding: 1.6rem;

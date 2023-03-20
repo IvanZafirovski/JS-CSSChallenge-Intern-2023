@@ -10,6 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(function (cards) {
       allCardsElements = filteredCards = cards;
       loadCards(filteredCards);
+      document.querySelectorAll(".like-btns").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          let heartEl = btn.querySelector(".like-btn");
+          let likesEl = btn.parentNode.querySelector(".likes");
+          let oldValue = parseInt(likesEl.innerHTML);
+
+          if (heartEl.classList.contains("full")) {
+            heartEl.classList.remove("full");
+            let newValue = oldValue - 1;
+            if (newValue <= 0) {
+              newValue = 0;
+            }
+            likesEl.innerHTML = newValue;
+          } else {
+            heartEl.classList.add("full");
+            let newValue = oldValue + 1;
+            likesEl.innerHTML = newValue;
+          }
+        });
+      });
     });
 });
 
@@ -58,7 +78,7 @@ function createCardElement(card, index) {
   const heading = document.createElement("div");
   const content = document.createElement("div");
   const headingRow = document.createElement("div");
-  const logo = document.createElement("div");
+  const logo = document.createElement("img");
   const profileImage = document.createElement("div");
   const profileImg = document.createElement("img");
   const nameDate = document.createElement("div");
@@ -76,11 +96,12 @@ function createCardElement(card, index) {
   caption.innerHTML = card.caption;
   name.innerHTML = card.name;
   date.innerHTML = card.date;
-  logo.innerHTML = card.source_type;
+  logo.setAttribute("src", `icons/${card.source_type}.svg`);
   likes.innerHTML = card.likes;
 
   likeBtn.innerHTML = `
   <svg
+  class = "like-btn"
   width="17"
   height="17"
   viewBox="0 0 17 17"
@@ -95,9 +116,6 @@ function createCardElement(card, index) {
   />
   </svg>
   `;
-  logo.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M7.98371 0.0333252C3.57448 0.0333252 0 3.6078 0 8.01704C0 11.9716 2.87829 15.2467 6.65219 15.8809V9.6827H4.72629V7.45218H6.65219V5.80751C6.65219 3.89923 7.81771 2.85932 9.52029 2.85932C10.3357 2.85932 11.0365 2.92009 11.2399 2.94685V4.94151L10.059 4.94209C9.13333 4.94209 8.95486 5.3819 8.95486 6.02751V7.45104H11.1637L10.8756 9.68155H8.95486V15.9342C12.905 15.4535 15.9673 12.095 15.9673 8.01475C15.9673 3.6078 12.3929 0.0333252 7.98371 0.0333252Z" fill="#1778F2"/>
-  </svg>`;
 
   newCard.classList.add("card-element");
   newCard.classList.add(`card-${index}`);
@@ -113,7 +131,7 @@ function createCardElement(card, index) {
   caption.classList.add("capiton");
   footer.classList.add("footer");
   likes.classList.add("likes");
-  likeBtn.classList.add("like-btn");
+  likeBtn.classList.add("like-btns");
 
   newCard.append(heading, content, footer);
   heading.append(headingRow, logo);
@@ -143,10 +161,5 @@ numberOfColumns.addEventListener("change", function (e) {
   let selectedVal = e.target.value;
   document.querySelector(
     ".layout-placeholder"
-  ).className = `.layout-placeholder col-${selectedVal}`;
-});
-
-const likeBtn = document.querySelectorAll(".like-btn");
-likeBtn.addEventListener("click", function () {
-  console.log("add");
+  ).className = `layout-placeholder col-${selectedVal}`;
 });
